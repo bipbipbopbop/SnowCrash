@@ -1,0 +1,15 @@
+Get the list of all users and their PID:
+cat /etc/passwd
+
+We noticed that the password for the current user level01 is showed in a hashed form (`42hDRfypTqqnw`, see `man 3 crypt`). We used the hashcat tool to bruteforce the hash to the original password.
+First, we go back to our computer & we compile hashcat:
+git clone https://github.com/hashcat/hashcat.git
+mkdir -p hashcat/deps
+git clone https://github.com/KhronosGroup/OpenCL-Headers.git hashcat/deps/OpenCL
+cd hashcat/ && make
+
+now we can decrypt the password:
+echo "42hDRfypTqqnw" > hash.txt
+./hashcat64.exe -a 3 -m 1500 hash.txt -o res.txt
+
+After computation, the command `cat res.txt` will prompt `42hDRfypTqqnw:abcdefg` ; `abcdefg` is the password for the user flag01.
