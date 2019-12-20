@@ -1,0 +1,18 @@
+Get the list of all users and their PID:
+cat /etc/passwd
+
+Get the PID for flag00, in this case 3000:
+flag00:x:3000:3000::/home/flag/flag00:/bin/bash
+
+Find all files associated to a PID (https://linuxhandbook.com/uid-linux/), and ignore stderr:
+find / -user 3000 2> /dev/null
+
+2 files remain, they both have the same content:
+/usr/sbin/john
+/rofs/usr/sbin/john
+
+level00@SnowCrash:~$ cat /usr/sbin/john
+cdiiddwpgswtgt
+
+We noticed it didn't look like a string encrypted by an algorithm like MD5, SHA, so we tried all rotN algorithms until we found a coherent string
+rot11 of cdiiddwpgswtgt gave us nottoohardhere, which is the password for flag00
