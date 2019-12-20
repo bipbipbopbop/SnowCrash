@@ -1,0 +1,7 @@
+A .pcap file is present in the home. After a quick googling we found that this file contains an packet capture history. We installed Wireshark and open the file with it.
+**No command, follow the installer.**
+
+In the Analyse tab, go to Follow -> TCP Flux. A new window will open, with the reconstitution of the messages that have been exchanged. we then easily identified the password: `Password: ft_wandr...NDRel.L0L`
+
+the `.` characters are non displayable ascii characters. After looking at their value we can see that they are all equals to the hexadecimal value "7f", which means DEL in the ascii table.
+This means that for each `.` characters, we must delete the last characters sent. This way, the password is "ft_waNDReL0L". It successfuly match the login flag02.
