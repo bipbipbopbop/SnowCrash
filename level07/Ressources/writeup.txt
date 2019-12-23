@@ -1,0 +1,2 @@
+We found a binary with the flag07 UID on execution. After a few tests and a static analyzing with gdb, we understood that the program print the shell variable environment LOGNAME, with a call to the shell builtin "echo". Thus, with the following command, we can execute getflag correctly:
+LOGNAME=\`getflag\` ./level07
