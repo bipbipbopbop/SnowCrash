@@ -1,0 +1,12 @@
+On login, a message "You have new mail." is output.
+after research i found that the mail is located at /var/mail/.
+
+Its content is a cron expression that executes a bash script ("/usr/sbin/openarenaserver") as flag05 user, every 2 minutes.
+This bash script executes every scripts in /opt/openraenaserver, and deletes them.
+
+Thus, we just created a script that calls the getflag command and redirect the output in an accessible path.
+getflag > /tmp/res.txt
+
+The following command print the flag05 token:
+level05@SnowCrash:/opt/openarenaserver$ cat /tmp/res.txt
+Check flag.Here is your token : viuaaale9huek52boumoomioc
