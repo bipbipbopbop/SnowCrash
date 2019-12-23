@@ -1,0 +1,13 @@
+We found an executable level10, that asks us for a file and a host, we also found that it uses the port 6969 using strings ~/level10.
+We used the current IP as the host, using nc, we listen to the socket to see that it prints the content of the file passed as a parameter.
+When we try to put ~/token as the parameter, we have permission errors, it uses access to check these permissions.
+After some research, we found that there is a race condition exploit possible with access, we will then exploit that to print the content of the file ~/token.
+
+We first used the following command:
+nc -l -k <IP> 6969 &
+This will listen to the port 6969 that the program uses in the background.
+
+Then, we made a shell script that alternates creating a file with making a symlink to ~/token, this is our exploit.sh script.
+It will be used to take advantage of the race condition happening in the program.
+
+Finally, we simply run the program indefinitely until we end up with our password for flag10, this is the run.sh file.
