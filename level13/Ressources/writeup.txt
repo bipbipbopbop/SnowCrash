@@ -1,0 +1,7 @@
+We found a binary in the home of the session. When we launch it, it prints the following:
+`UID 2013 started us but we we expect 4242`
+With a static analysis of the program, we understood that there is a condition on whether a call to getuid() returns the value 4242 or not.
+The following instructions will change the getuid() return value and change the condition result:
+- set a breakpoint at the comparison with 4242 literal : `b *(main+14)`
+- change eax value to 4242: `set $eax=4242`
+- resume the program execution. It will now print the key.
