@@ -1,0 +1,11 @@
+We found nothing in the home, and the command:
+`find / -user 3014 2> /dev/null`
+gives us nothing. So we decided to bypass the reverse security on getflag.
+
+We need 3 breakpoint in order to complete our mission:
+- At the beginning, to identify the offset of the 2 others,
+- At the ptrace() return value checking : we must ignore the error value returned.
+- At the getuid() return value storing : we must change that value to 3014, the UID of flag14.
+All those operation involve the register EAX. Then, with the gdb instruction `set $eax=VALUE`, we can modify the value of the register.
+
+Once this is done, resuming the program execution will give us the requested key as output.
