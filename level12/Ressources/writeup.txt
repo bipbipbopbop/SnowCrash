@@ -1,4 +1,4 @@
-We found a lua script which runs a server, it listens on the port 4646 on localhost.
+We found a perl script which runs a server, it listens on the port 4646 on localhost.
 There is a shell command that is ran using a string x.
 This string gets preprocessed using regex, it will be converted to uppercase and everything after whitespace will be removed.
 We can make use of subshell to execute arbitrary code, we just create a script that will run getflag and store its result in /tmp/res, the filename of the script must be uppercase due to the regex translation.
